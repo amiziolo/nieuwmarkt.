@@ -1,0 +1,77 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #BFEE90;
+}
+
+h1 {
+    font-size: 36px;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+body {
+    overflow: visible; /* Allow pieces to move freely within the page */
+    margin: 0;
+    padding: 0;
+}
+
+#puzzle-container {
+    position: relative;
+    border: 5px solid #006D5B;
+    border-radius: 15px;
+    overflow: visible; /* Make sure container doesn’t clip the pieces */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #BFEE90;
+    width: 600px;
+    height: 450px;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.piece {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-size: 400px 300px;
+    cursor: grab;
+    clip-path: url(#piece-mask); /* Apply the jigsaw shape */
+    border: 1px solid #ddd;
+    transition: transform 0.2s ease;
+    z-index: 100; /* Ensure pieces are above other elements */
+}
+
+.piece:hover {
+    transform: scale(1.05);
+    z-index: 101; /* Hovered piece should be on top */
+}
+
+
+#frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 10px solid #8B4513; /* Brown frame color */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.7); /* Light translucent background */
+    z-index: -1; /* Behind the pieces */
+}
+
+
+
+
+
+#message {
+    font-size: 24px;
+    color: #28a745; /* Green for success message */
+    text-align: center;
+    margin-top: 20px;
+}

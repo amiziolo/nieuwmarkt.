@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jigsaw Puzzle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffd4f4;
+            position: relative;
+        }
+
+        /* Title Styling */
+        #title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Honk', sans-serif;
+            font-size: 48px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        /* Info Box Styling */
+        #info-box {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            width: 600px;
+            height: calc(100% - 100px);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            overflow-y: auto;
+        }
+
+        #puzzle-container {
+            position: relative;
+            width: 600px;
+            height: 450px;
+            border: 5px solid #CB80AB;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #ffff80;
+            overflow: visible;
+            margin-left: 53%;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+
+        #frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 10px solid #FF5580;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: -1;
+        }
+
+        .piece {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-size: 600px 450px;
+            cursor: grab;
+            border: 1px solid #ddd;
+            transition: transform 0.2s ease;
+            z-index: 100;
+        }
+
+        .piece:hover {
+            transform: scale(1.05);
+            z-index: 101;
+        }
+
+        #message {
+            font-size: 24px;
+            color: #28a745;
+            text-align: center;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 200;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            display: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Congratulatory Message Styling */
+        #congratulations-message {
+            font-family: 'Honk', sans-serif;
+            font-size: 36px;
+            color: #28a745;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 200;
+            display: none;
+            cursor: pointer; /* Added cursor to indicate clickability */
+        }
+
+        /* Next page section */
+        #next-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff0f5;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            z-index: 300;
+        }
+
+        #next-page h2 {
+            font-family: 'Honk', sans-serif;
+            font-size: 48px;
+            color: #FF5580;
+        }
+
+        #next-page p {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">Nieuwmarkt Metro Station</div>
+    <div id="info-box">
+        <p>LITTLE BIG HISTORY OF NIEUWMARKT METRO STATION
+Nieuwmarkt metro station is a needle in a haystack that is the world around us. We
+as a species are so accustomed to daily amenities of discovery and stimulation that
+we fail to notice the depth of our immediate environment.
+“Little big histories are studies that connect a specific subject, such as Tiananmen, to
+aspects of all major stages of big history, for example, the history of stars and
+planets, the development of life, and state formation throughout the world.”
+1 Little big
+history is our microscope, it allows us to penetrate deep into the basis of the origin of
+the ordinary world. Finding peculiar sensations in routine activities is considered
+impossible, but all you have to do is find a point of connection. Nieuwmarkt station
+was opened to the public on 11 October 1980 and is part of Amsterdam’s metro
+network, is part of the underground connection reaching Central Station, and serves
+thousands of passengers daily, It is not the most interesting information about this
+place. In this article, we are not focusing on dry facts about Niewmarkt but we
+concentrate on its parts that are undeniably elements of the history of the universe.
+We enrich our basic sense of understanding the space around us.
+The human species' evolutionary journey was long, with many changes and
+breakthroughs along the way, but it all began with the Big Bang.  For whole article solve the puzzle and click on congratulations message.</p>
+    </div>
+    <div id="puzzle-container">
+        <div id="frame"></div>
+    </div>
+    <div id="message">Congratulations, you solved the puzzle!</div>
+    <div id="congratulations-message">You solved the puzzle, Congratulations! Now click for more...</div>
+	 <!-- Elfsight Popup -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+<div class="elfsight-app-9bf5f5ef-867d-4caf-b7f9-b413d02b4cd5" data-elfsight-app-lazy></div>
+
+
+
+    <!-- New hidden next page -->
+    <div id="next-page">
+        <h2>Welcome to the Next Section!</h2>
+        <p>Here you can read the whole article: file:///C:/Users/Amelia/Downloads/Dokument%20(4)%20(1).pdf </p>
+    </div>
+
+    <script>
+        const puzzleContainer = document.getElementById('puzzle-container');
+        const congratulationsMessage = document.getElementById('congratulations-message');
+        const nextPage = document.getElementById('next-page');
+        const imageSrc = 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Nieuwmarkt_platform%2C_2022.jpg';
+
+        const correctPositions = [
+            { left: 0, top: 0 }, { left: 150, top: 0 }, { left: 300, top: 0 }, { left: 450, top: 0 },
+            { left: 0, top: 150 }, { left: 150, top: 150 }, { left: 300, top: 150 }, { left: 450, top: 150 },
+            { left: 0, top: 300 }, { left: 150, top: 300 }, { left: 300, top: 300 }, { left: 450, top: 300 }
+        ];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createPuzzle() {
+            const shuffledPositions = shuffle([...correctPositions]);
+
+            for (let i = 0; i < 12; i++) {
+                const piece = document.createElement('div');
+                piece.classList.add('piece');
+                piece.style.backgroundImage = `url(${imageSrc})`;
+                piece.style.backgroundPosition = `-${correctPositions[i].left}px -${correctPositions[i].top}px`;
+
+                piece.style.clipPath = `url(#puzzle-piece-${(i % 4) + 1})`;
+
+                const randomLeft = Math.floor(Math.random() * (puzzleContainer.clientWidth - 150));
+                const randomTop = Math.floor(Math.random() * (puzzleContainer.clientHeight - 150));
+
+                piece.style.left = `${randomLeft}px`;
+                piece.style.top = `${randomTop}px`;
+
+                piece.setAttribute('draggable', true);
+                piece.addEventListener('dragstart', dragStart);
+                piece.addEventListener('dragend', dragEnd);
+
+                puzzleContainer.appendChild(piece);
+            }
+        }
+
+        let draggedPiece = null;
+        let draggedPieceStartX = 0;
+        let draggedPieceStartY = 0;
+
+        function dragStart(event) {
+            draggedPiece = event.target;
+            draggedPieceStartX = event.clientX - draggedPiece.offsetLeft;
+            draggedPieceStartY = event.clientY - draggedPiece.offsetTop;
+            draggedPiece.style.opacity = '0.7';
+        }
+
+        function dragEnd(event) {
+            if (!draggedPiece) return;
+
+            const x = event.clientX - draggedPieceStartX;
+            const y = event.clientY - draggedPieceStartY;
+
+            const snappedLeft = Math.round(x / 150) * 150;
+            const snappedTop = Math.round(y / 150) * 150;
+
+            draggedPiece.style.left = `${snappedLeft}px`;
+            draggedPiece.style.top = `${snappedTop}px`;
+
+            draggedPiece.style.opacity = '1';
+            draggedPiece = null;
+
+            checkPuzzleCompletion();
+        }
+
+        function checkPuzzleCompletion() {
+            const pieces = document.querySelectorAll('.piece');
+            let isCompleted = true;
+
+            pieces.forEach((piece, index) => {
+                const pieceLeft = parseInt(piece.style.left, 10);
+                const pieceTop = parseInt(piece.style.top, 10);
+                if (pieceLeft !== correctPositions[index].left || pieceTop !== correctPositions[index].top) {
+                    isCompleted = false;
+                }
+            });
+
+            if (isCompleted) {
+                congratulationsMessage.style.display = 'block';
+            }
+        }
+
+        // Add click event to navigate to the next page
+        congratulationsMessage.addEventListener('click', function() {
+            congratulationsMessage.style.display = 'none';
+            nextPage.style.display = 'flex'; // Show the next section
+        });
+
+        createPuzzle();
+    </script>
+</body>
+</html>
